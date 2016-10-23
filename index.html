@@ -1,49 +1,59 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="http://static.lyrk.de/leaflet/0.7/leaflet.css" />
-        <script src="http://static.lyrk.de/leaflet/0.7/leaflet.js"></script>
-        
-        <script src="./js/jquery-3.1.1.min.js"></script>
-        <script src="./js/main.js"></script>
+	<head>
+		<link rel="stylesheet" href="http://static.lyrk.de/leaflet/0.7/leaflet.css" />
+		<script src="http://static.lyrk.de/leaflet/0.7/leaflet.js"></script>
+		
+		<script src="./js/jquery-3.1.1.min.js"></script>
+		<script src="./js/main.js"></script>
 
-        <script src="./js/leaflet-heat.js"></script>
-        <style type="text/css">
-            body, html {
-                padding: 0px;
-                margin: 0px;
-            }
-            #map {
-                height: 100%;
-                width: 80%;
-                position: absolute;
-                left: 20%;
-            }
+		<meta charset="UTF-8">
 
-        </style>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <div id="sidebar">
- 	    L&auml;dlich versus st&auml;dtisch
-            <input type="range" min="0" max="10" id="slider1" onInput="renderObj()">
-	    Monochrom versus bunt
-	    <input type="range" min="0" max="10" id="slider2" onInput="renderObj()">
-            Gutmensch versus Pack
-            <input type="range" min="0" max="10" id="slider3" onInput="renderObj()">
-            Familienmensch versus Selbstverwirklicher
- 	    <input type="range" min="0" max="10" id="slider4" onInput="renderObj()">
-        </div>
-        <div id="map"></div>
-        <script type="text/javascript"> 
-            map = L.map('map').setView([51.0474, 13.7384], 13);
+		<script src="./js/leaflet-heat.js"></script>
+		<style type="text/css">
+			body, html {
+				padding: 0px;
+				margin: 0px;
+			}
+			#map {
+				height: 100%;
+				width: 80%;
+				position: absolute;
+				left: 20%;
+			}
 
-            if(L.Browser.retina) var tp = "lr";
-            else var tp = "ls";
+		</style>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="sidebar">
+			<div class="slider">
+				<input type="range" min="0" max="10" id="slider1" onInput="renderObj()">
+				<label>Ländlich versus Städtisch</label>
+			</div>
+			<div class="slider">
+				<input type="range" min="0" max="10" id="slider2" onInput="renderObj()">
+				<label>Monochrom versus bunt</label>
+			</div>
+			<div class="slider">
+				<input type="range" min="0" max="10" id="slider3" onInput="renderObj()">
+				<label>Gutmensch versus Pack</label>
+			</div>
+			<div class="slider">
+				<input type="range" min="0" max="10" id="slider4" onInput="renderObj()">
+				<label>Familienmensch versus Selbstverwirklicher</label>
+			</div>
+		</div>
+		<div id="map"></div>
+		<script type="text/javascript"> 
+			map = L.map('map').setView([51.0474, 13.7384], 13);
 
-            L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=64fbc258da5d4c1897f4332b67866b46', {
-                attribution: '<a href="http://geodienste.lyrk.de/copyright">Lizenzinformationen</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
-                maxZoom: 18
-            }).addTo(map);
-        </script>
-    </body>
+			if(L.Browser.retina) var tp = "lr";
+			else var tp = "ls";
+
+			L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=64fbc258da5d4c1897f4332b67866b46', {
+				attribution: '<a href="http://geodienste.lyrk.de/copyright">Lizenzinformationen</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
+				maxZoom: 18
+			}).addTo(map);
+		</script>
+	</body>
 </html>
