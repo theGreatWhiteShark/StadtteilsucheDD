@@ -24,7 +24,7 @@ function render(s1,s2,s3,s4,s5)
 	var features = globaldata['features'];
 
 	features.forEach(function(feature){
-		var gewicht = feature.properties.dichte * s1 + feature.properties.farbe * s2 + feature.properties.wahl * s3 + feature.properties.kinder * s4 + feature.properties.haltestelle * s5;
+		var gewicht = feature.properties.dichte * s1 + feature.properties.farbe * s2 + feature.properties.wahl * s3 + feature.properties.kinder * s4 + feature.properties.haltestelle * s5 * 3;
 		var coordinates = feature['geometry']['coordinates'];
 
 		gewicht = (gewicht > 0) * gewicht;
