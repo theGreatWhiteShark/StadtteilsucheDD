@@ -9,11 +9,11 @@ $().ready(function(){
 		//var features = res['features'];
 		console.log(res);
 		globaldata = res;
-		render(0,0,0,0);
+		render(0,0,0,0,0);
 	});
 });
 
-function render(s1,s2,s3,s4)
+function render(s1,s2,s3,s4,s5)
 {
 
 	if (heatlayer)
@@ -24,11 +24,14 @@ function render(s1,s2,s3,s4)
 	var features = globaldata['features'];
 
 	features.forEach(function(feature){
-		var gewicht = feature.properties.dichte * s1 + feature.properties.farbe * s2 + feature.properties.wahl * s3 + feature.properties.kinder * s4;
+		var gewicht = feature.properties.dichte * s1 + feature.properties.farbe * s2 + feature.properties.wahl * s3 + feature.properties.kinder * s4 + feature.properties.haltestelle * s5;
 		var coordinates = feature['geometry']['coordinates'];
 
 		gewicht = (gewicht > 0) * gewicht;
-
+		//if (gewicht > 3) {
+		//	gewicht = 3;
+		//}
+	
 		datalist.push([coordinates[1], coordinates[0], gewicht])
 	});
 	heatlayer = L.heatLayer(datalist, {radius: 50}).addTo(map);
@@ -47,8 +50,18 @@ function renderObj()
 
 	var val4 = $('#slider4').val();
 	val4 = (val4 / 5) - 1;
+	
+	var val5 = $('#slider5').val();
+	val5 = (val5 / 10);
 
-	render(val1,val2,val3,val4);
+	console.log(val1)
+	console.log(val2)
+	console.log(val3)
+	console.log(val4)
+	console.log(val5)
+
+
+	render(val1,val2,val3,val4,val5);
 }
 
 
