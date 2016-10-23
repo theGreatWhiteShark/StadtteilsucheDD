@@ -6,12 +6,23 @@ input[type=range] {
 	margin-right: 5%;
 }
 
+body, html {
+				padding: 0px;
+				margin: 0px;
+			}
+			#map {
+				height: 100%;
+				width: 75%;
+				position: absolute;
+				left: 25%;
+			}
+
 input[type=range]::-webkit-slider-runnable-track {
 	width: 100%;
 	height: 2px;
 	cursor: pointer;
 	background: gray;
-	border: 0.2px solid #010101;
+	border: 0.2px solid #999999;
 	margin-bottom: 12px;
 	margin-top: 6px;
 }
@@ -29,7 +40,7 @@ input[type=range]::-webkit-slider-thumb {
 
 #sidebar {
 	height: 100%;
-	width: 20%;
+	width: 25%;
 	position: absolute;
 	background: url('./img/c92798f3.png');
 	color: #d6d6d6;
@@ -45,11 +56,25 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .slider {
-	margin-top: 30px;
+	margin-top: 50px;
 	width: 100%;
 }
 
-.slider label {
+.slider label.left {
+	text-align: left;
+	margin-left: 10px;
+	float: left;
+	display: block;
+}
+
+.slider label.right {
+	text-align: right;
+	margin-right: 10px;
+	float: right;
+	display: block;
+}
+
+.slider label.center {
 	text-align: center;
 	width: 100%;
 	display: block;

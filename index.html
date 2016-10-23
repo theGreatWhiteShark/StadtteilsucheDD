@@ -10,16 +10,7 @@
 
 		<script src="./js/leaflet-heat.js"></script>
 		<style type="text/css">
-			body, html {
-				padding: 0px;
-				margin: 0px;
-			}
-			#map {
-				height: 100%;
-				width: 80%;
-				position: absolute;
-				left: 20%;
-			}
+			
 
 		</style>
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -28,24 +19,28 @@
 		<div id="sidebar">
 			<img class="logo" src="./img/logo@2x.png"/>
 			<div class="slider">
-				<input type="range" min="0" max="10" id="slider1" onInput="renderObj()">
-				<label>Ländlich versus Städtisch</label>
+				<input type="range" min="0" max="10" step="0.2" id="slider1" onInput="renderObj()">
+				<label class="left">Ländlich</label>
+				<label class="right">Städtisch</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" id="slider2" onInput="renderObj()">
-				<label>Monochrom versus bunt</label>
+				<input type="range" min="0" max="10" step="0.2" id="slider2" onInput="renderObj()">
+				<label class="left">Monochrom</label>
+				<label class="right">Bunt</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" id="slider3" onInput="renderObj()">
-				<label>Pack versus Gutmensch</label>
+				<input type="range" min="0" max="10" step="0.2" id="slider3" onInput="renderObj()">
+				<label class="left">Pack</label>
+				<label class="right">Gutmensch</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" id="slider4" onInput="renderObj()">
-				<label>Familienmensch versus Selbstverwirklicher</label>
+				<input type="range" min="0" max="10" step="0.2" id="slider4" onInput="renderObj()">
+				<label class="left">Familienmensch</label>
+				<label class="right">Selbstverwirklicher</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" value="0" id="slider5" onInput="renderObj()">
-				<label>ÖPNV Verfügbarkeit</label>
+				<input type="range" min="0" max="10" step="0.2" value="0" id="slider5" onInput="renderObj()">
+				<label class="center">ÖPNV Verfügbarkeit</label>
 			</div>
 		</div>
 		<div id="map"></div>
