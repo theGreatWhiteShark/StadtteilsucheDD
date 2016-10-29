@@ -19,27 +19,27 @@
 		<div id="sidebar">
 			<img class="logo" src="./img/logo@2x.png"/>
 			<div class="slider">
-				<input type="range" min="0" max="10" step="0.4" id="slider1" onInput="renderObj()">
+				<input type="range" min="0" max="10" step="0.5" id="slider1" onInput="renderObj()">
 				<label class="left">Ländlich</label>
 				<label class="right">Städtisch</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" step="0.4" id="slider2" onInput="renderObj()">
+				<input type="range" min="0" max="10" step="0.5" id="slider2" onInput="renderObj()">
 				<label class="left">Monochrom</label>
 				<label class="right">Bunt</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" step="0.4" id="slider3" onInput="renderObj()">
+				<input type="range" min="0" max="10" step="0.5" id="slider3" onInput="renderObj()">
 				<label class="left">Pack</label>
 				<label class="right">Gutmensch</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" step="0.4" id="slider4" onInput="renderObj()">
+				<input type="range" min="0" max="10" step="0.5" id="slider4" onInput="renderObj()">
 				<label class="left">Familienmensch</label>
 				<label class="right">Selbstverwirklicher</label>
 			</div>
 			<div class="slider">
-				<input type="range" min="0" max="10" step="0.4" value="0" id="slider5" onInput="renderObj()">
+				<input type="range" min="0" max="10" step="0.5" value="0" id="slider5" onInput="renderObj()">
 				<label class="center">ÖPNV Verfügbarkeit</label>
 			</div>
 		</div>
@@ -52,7 +52,8 @@
 
 			L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=64fbc258da5d4c1897f4332b67866b46', {
 				attribution: '<a href="http://geodienste.lyrk.de/copyright">Lizenzinformationen</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
-				maxZoom: 15, minZoom: 10
+				maxZoom: 18
+				//maxZoom: 15, minZoom: 10
 			}).addTo(map);
 		</script>
 	</body>
