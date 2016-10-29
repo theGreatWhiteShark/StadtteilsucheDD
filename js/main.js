@@ -24,7 +24,7 @@ function render(s1,s2,s3,s4,s5)
 	var features = globaldata['features'];
 
 	features.forEach(function(feature){
-		var gewicht = feature.properties.dichte * s1 + feature.properties.farbe * s2 + feature.properties.wahl * s3 + feature.properties.kinder * s4 + feature.properties.haltestelle * s5 * 3;
+		var gewicht = feature.properties.dichte * s1 + feature.properties.farbe * s2 + feature.properties.wahl * s3 - feature.properties.kinder * s4 + feature.properties.haltestelle * s5 * 3;
 		var coordinates = feature['geometry']['coordinates'];
 
 		gewicht = (gewicht > 0) * gewicht;
@@ -62,23 +62,4 @@ function renderObj()
 
 
 	render(val1,val2,val3,val4,val5);
-}
-
-
-function scoring_function(s1, s2, s3, s4) {
-
-	var len = globaldata.features.length;
-	var s = new Array(len);
-
-	for (var i = 0; i<len; i++) {
-		s[i] = globaldata.features[i].properties.dichte * s1 + globaldata.features[i].properties.farbe * s2 + globaldata.features[i].properties.wahl * s3;
-		s[i] = s[i] + globaldata.features[i].properties.kinder * s4;
-		s[i] = (s[i] < 0) * (s[i] > 4) * s[i];
-		console.log(s[i]);
-		//if (s[i] < 0) {
-		//  s[i] = 0;
-		//}
-	}
-
-	return s;
 }
