@@ -3,10 +3,7 @@ heatlayer = null;
 $().ready(function(){
 	console.log('ready');
 
-	$.get('./data/myfile.json', function(res){
-		//console.log(res)
-		//var data = JSON.parse(res);
-		//var features = res['features'];
+	$.get('./data/all_pois.json', function(res) {
 		console.log(res);
 		globaldata = res;
 		render(0,0,0,0,0);
@@ -21,9 +18,8 @@ function render(s1,s2,s3,s4,s5)
 		map.removeLayer(heatlayer)
 	}
 	var datalist = [];
-	var features = globaldata.features;
 
-	features.forEach(function(feature){
+	globaldata.features.forEach(function(feature) {
 		var stadtteilfactor = feature.properties.dichte * s1
 				    + feature.properties.farbe * s2
 				    + feature.properties.wahl * s3;
@@ -31,9 +27,9 @@ function render(s1,s2,s3,s4,s5)
 		stadtteilfactor = (stadtteilfactor > 0) * stadtteilfactor; //ReLU
 
 		// Offset von 0.3 soll durch 'Wohngebiete' als neue Dimension ersetzt werden.
-		var gewicht =  3. * stadtteilfactor * (0.3 + feature.properties.haltestelle * s5 * 3 - feature.properties.kinder * s4);	 // haltestellen werden mit 3 multipliziert.
+		var gewicht =  3. * stadtteilfactor * (0.3 + feature.properties.stops * s5 - feature.properties.kinder * s4);
 
-		if(gewicht > 0.01) {
+		if(gewicht > 0.01) {					   // ReLU
 			var coordinates = feature.geometry.coordinates;
 			datalist.push([coordinates[1], coordinates[0], gewicht])
 		}
@@ -57,13 +53,6 @@ function renderObj()
 	
 	var val5 = $('#slider5').val();
 	val5 = (val5 / 10);
-
-	console.log(val1)
-	console.log(val2)
-	console.log(val3)
-	console.log(val4)
-	console.log(val5)
-
 
 	render(val1,val2,val3,val4,val5);
 }
