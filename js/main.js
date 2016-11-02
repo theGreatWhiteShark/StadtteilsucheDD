@@ -21,18 +21,22 @@ function render(s1,s2,s3,s4,s5)
 		map.removeLayer(heatlayer)
 	}
 	var datalist = [];
-	var features = globaldata['features'];
+	var features = globaldata.features;
 
 	features.forEach(function(feature){
-		var gewicht = feature.properties.dichte * s1 + feature.properties.farbe * s2 + feature.properties.wahl * s3 - feature.properties.kinder * s4 + feature.properties.haltestelle * s5 * 3;
-		var coordinates = feature['geometry']['coordinates'];
+		var stadtteilfactor = feature.properties.dichte * s1
+				    + feature.properties.farbe * s2
+				    + feature.properties.wahl * s3;
 
-		gewicht = (gewicht > 0) * gewicht;
-		//if (gewicht > 3) {
-		//	gewicht = 3;
-		//}
-	
-		datalist.push([coordinates[1], coordinates[0], gewicht])
+		stadtteilfactor = (stadtteilfactor > 0) * stadtteilfactor; //ReLU
+
+		// Offset von 0.3 soll durch 'Wohngebiete' als neue Dimension ersetzt werden.
+		var gewicht =  3. * stadtteilfactor * (0.3 + feature.properties.haltestelle * s5 * 3 - feature.properties.kinder * s4);	 // haltestellen werden mit 3 multipliziert.
+
+		if(gewicht > 0.01) {
+			var coordinates = feature.geometry.coordinates;
+			datalist.push([coordinates[1], coordinates[0], gewicht])
+		}
 	});
 	heatlayer = L.heatLayer(datalist, {radius: 50}).addTo(map);
 }
