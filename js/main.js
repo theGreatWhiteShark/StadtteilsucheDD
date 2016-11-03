@@ -19,14 +19,13 @@ $().ready(function(){
 function render(district_props,s4,s5)
 {
 	num_props = district_props.length;
-	if(num_props == 0) return;
-
 	if (heatlayer)
 	{
 		map.removeLayer(heatlayer)
 	}
-	var datalist = [];
+	if(num_props == 0) return;
 
+	var datalist = [];
 	globaldata.forEach(function(feature) {
 
 		var distance = 0.0;
