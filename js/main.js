@@ -4,14 +4,22 @@ $().ready(function(){
 	console.log('ready');
 
 	$.get('./data/all_pois.json', function(res) {
-		console.log(res);
-		globaldata = res;
-		render(0,0,0,0,0);
+		globaldata = [];
+		res.features.forEach(function(feature) {
+			globaldata.push([[feature.properties.dichte,  feature.properties.farbe, feature.properties.wahl],
+					 [feature.properties.wohnung, feature.properties.stops, feature.properties.kinder],
+					  feature.geometry.coordinates]);
+		});
+		render([],0,0);
 	});
 });
 
-function render(s1,s2,s3,s4,s5)
+
+
+function render(district_props,s4,s5)
 {
+	num_props = district_props.length;
+	if(num_props == 0) return;
 
 	if (heatlayer)
 	{
@@ -19,18 +27,22 @@ function render(s1,s2,s3,s4,s5)
 	}
 	var datalist = [];
 
-	globaldata.features.forEach(function(feature) {
-		var distance = Math.abs(feature.properties.dichte - s1) 
-			     + Math.abs(feature.properties.farbe - s2)
-			     + Math.abs(feature.properties.wahl - s3);
-		var stadtteilfactor = 2/(1+Math.exp(distance));
+	globaldata.forEach(function(feature) {
 
-		if(stadtteilfactor > 0.05)
+		var distance = 0.0;
+		district_props.forEach(function(prop)
+				{
+					distance += Math.abs(feature[0][prop[1]] - prop[0]);
+				});
+
+		var stadtteilfactor = 2/(1+Math.exp(3.*distance/num_props));
+
+		if(stadtteilfactor > 0.3)
 		{
-			var gewicht =  stadtteilfactor * (feature.properties.wohnung * 0.1 + feature.properties.stops * s5 - feature.properties.kinder * s4);
+			var gewicht =  stadtteilfactor * (feature[1][0] * 0.1 + feature[1][1] * s5 - feature[1][2] * s4);
 			if(gewicht > 0.01)
 			{					   // ReLU
-				var coordinates = feature.geometry.coordinates;
+				var coordinates = feature[2];
 				datalist.push([coordinates[1], coordinates[0], gewicht])
 			}
 		}
@@ -38,16 +50,28 @@ function render(s1,s2,s3,s4,s5)
 	heatlayer = L.heatLayer(datalist, {radius: 50}).addTo(map);
 }
 
+
+
 function renderObj()
 {
-	var val1 = $('#slider1').val();
-	val1 = (val1 / 5) - 1;
+	var district_props = [];
+	if( $('#cb_dichte:checked').val() ) {
+		var val1 = $('#slider1').val();
+		val1 = (val1 / 5) - 1;
+		district_props.push([val1, 0]);
+	}
 
-	var val2 = $('#slider2').val();
-	val2 = (val2 / 5) - 1;
+	if( $('#cb_farbe:checked').val() ) {
+		var val2 = $('#slider2').val();
+		val2 = (val2 / 5) - 1;
+		district_props.push([val2, 1]);
+	}
 
-	var val3 = $('#slider3').val();
-	val3 = (val3 / 5) - 1;
+	if( $('#cb_wahl:checked').val() ) {
+		var val3 = $('#slider3').val();
+		val3 = (val3 / 5) - 1;
+		district_props.push([val3, 2]);
+	}
 
 	var val4 = $('#slider4').val();
 	val4 = (val4 / 5) - 1;
@@ -55,11 +79,5 @@ function renderObj()
 	var val5 = $('#slider5').val();
 	val5 = (val5 / 10);
 
-	console.log(val1);
-	console.log(val2);
-	console.log(val3);
-	console.log(val4);
-	console.log(val5);
-
-	render(val1,val2,val3,val4,val5);
+	render(district_props,val4,val5);
 }
