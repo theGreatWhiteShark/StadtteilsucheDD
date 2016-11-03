@@ -34,11 +34,11 @@ function render(district_props,s4,s5)
 					distance += Math.abs(feature[0][prop[1]] - prop[0]);
 				});
 
-		var stadtteilfactor = 2/(1+Math.exp(3.*distance/num_props));
+		var stadtteilfactor = 2/(1+Math.exp(2.*distance/num_props));
 
-		if(stadtteilfactor > 0.3)
+		if(stadtteilfactor > 0.1)
 		{
-			var gewicht =  stadtteilfactor * (feature[1][0] * 0.1 + feature[1][1] * s5 - feature[1][2] * s4);
+			var gewicht =  stadtteilfactor * (feature[1][0] * 3.0 + feature[1][1] * s5 - feature[1][2] * s4);
 			if(gewicht > 0.01)
 			{					   // ReLU
 				var coordinates = feature[2];
