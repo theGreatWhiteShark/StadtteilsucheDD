@@ -13,7 +13,7 @@ function OnLoad(filename){
 		});
 		render([],0,0);
 	});
-});
+}
 
 
 
