@@ -1,9 +1,10 @@
 globaldata = null;
 heatlayer = null;
-$().ready(function(){
+
+function OnLoad(filename){
 	console.log('ready');
 
-	$.get('./data/all_pois.json', function(res) {
+	$.get(filename, function(res) {
 		globaldata = [];
 		res.features.forEach(function(feature) {
 			globaldata.push([[feature.properties.dichte,  feature.properties.farbe, feature.properties.wahl],
