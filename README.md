@@ -5,6 +5,9 @@ The problem we are tackling with this app is how to find an appropriate place in
 
 To answer this question we solely use demographic data provided by the city of Dresden.
 
+# Video
+For an even better introduction to this package than the description above check out our [presentation at the Datenspuren](https://www.youtube.com/watch?v=znWmLYXqkpQ&feature=youtu.be) 
+
 # Deployment
 One possible way to use this app is via an apache server.
 
