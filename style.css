@@ -97,3 +97,15 @@ input[type=range]:disabled::-webkit-slider-thumb {
 h2, h3 {
 	margin-left: 10;
 }
+/* display the fallback paragraphs next to the checkboxes and center their text (because the labels itself without the slider do not look nice) */
+.sidebar_paragraph {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto 0 5px;
+    position: relative;
+}
+/* display the paragraph and the corresponding checkbox both in one
+line */
+.sidebar_checkbox {
+    display: inline-block;
+}
