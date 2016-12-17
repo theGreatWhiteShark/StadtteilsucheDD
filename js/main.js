@@ -122,3 +122,61 @@ function renderObj()
 
 	render(district_props, val4, val5);
 }
+
+// toggle the visibility of the sliders using the sliders action
+// button form
+// (so I am the only one commenting?)
+$(function(){
+    // short for $(document).ready(function(){
+    $('#cb_dichte').change( function(){
+	// whenenver the status of the checkbox changes apply the
+	// following changes to the sliders style values (depending
+	// on its current state)
+	renderObj();
+	if ( $( "#slider1" ).css( "visibility" ) === "hidden" ){
+	    $( "#slider1" ).css( "visibility", "visible" );
+	    $( "#label_dichte_left" ).css( "visibility", "visible" );
+	    $( "#label_dichte_right" ).css( "visibility", "visible" );
+	    $( "#p_dichte" ).css( "visibility", "hidden" );
+	} else {
+	    $( "#slider1" ).css( "visibility", "hidden" );
+	    $( "#label_dichte_left" ).css( "visibility", "hidden" );
+	    $( "#label_dichte_right" ).css( "visibility", "hidden" );
+	    $( "#p_dichte" ).css( "visibility", "visible" );
+	}
+    });
+    $('#cb_farbe').change( function(){
+	// whenenver the status of the checkbox changes apply the
+	// following changes to the sliders style values (depending
+	// on its current state)
+	renderObj();
+	if ( $( "#slider2" ).css( "visibility" ) === "hidden" ){
+	    $( "#slider2" ).css( "visibility", "visible" );
+	    $( "#label_farbe_left" ).css( "visibility", "visible" );
+	    $( "#label_farbe_right" ).css( "visibility", "visible" );
+	    $( "#p_farbe" ).css( "visibility", "hidden" );
+	} else {
+	    $( "#slider2" ).css( "visibility", "hidden" );
+	    $( "#label_farbe_left" ).css( "visibility", "hidden" );
+	    $( "#label_farbe_right" ).css( "visibility", "hidden" );
+	    $( "#p_farbe" ).css( "visibility", "visible" );
+	}
+    });
+    $('#cb_wahl').change( function(){
+	// whenenver the status of the checkbox changes apply the
+	// following changes to the sliders style values (depending
+	// on its current state)
+	renderObj();
+	if ( $( "#slider3" ).css( "visibility" ) === "hidden" ){
+	    $( "#slider3" ).css( "visibility", "visible" );
+	    $( "#label_wahl_left" ).css( "visibility", "visible" );
+	    $( "#label_wahl_right" ).css( "visibility", "visible" );
+	    $( "#p_wahl" ).css( "visibility", "hidden" );
+	} else {
+	    $( "#slider3" ).css( "visibility", "hidden" );
+	    $( "#label_wahl_left" ).css( "visibility", "hidden" );
+	    $( "#label_wahl_right" ).css( "visibility", "hidden" );
+	    $( "#p_wahl" ).css( "visibility", "visible" );
+	}
+    });		       
+});
