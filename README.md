@@ -8,7 +8,9 @@ To answer this question we solely use demographic data provided by the city of D
 # Video
 For an even better introduction to this package than the description above check out our [presentation at the Datenspuren](https://www.youtube.com/watch?v=znWmLYXqkpQ&feature=youtu.be) 
 
-# Deployment
+# Installation
+## Via an Apache
+
 One possible way to use this app is via an apache server.
 
 ```bash
@@ -16,3 +18,12 @@ sudo apt install apache2
 ```
 
 and copy the content of this repository to /var/www/html
+
+## Via npm
+
+Alternatively you can use [node.js](https://nodejs.org/en/).
+
+```bash
+sudo npm install -g http-server
+http-server
+```
