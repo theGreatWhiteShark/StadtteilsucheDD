@@ -29,7 +29,7 @@
 		<!-- I use visibility: hidden to make the elements disappear-->
 		<!-- In addition I set the height of the elements to 0 (what 
 			 only applies when they are invisibile) -->
-		<input type="range" min="0" max="10" step="0.5" id="slider1" style="visibility: hidden; height: 0">
+		<input type="range" min="0" max="10" step="0.5" id="slider1" onInput="renderObj()" style="visibility: hidden; height: 0">
 		<label class="left" id="label_dichte_left" style="visibility: hidden;">Ländlich</label>
 		<label class="right" id="label_dichte_right" style="visibility: hidden;">Städtisch</label>
       </div>
