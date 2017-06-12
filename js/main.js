@@ -13,6 +13,14 @@ function OnLoad(filename){
 		});
 		render([],0,0);
 	});
+  /* Every time the page is loaded all sliders should be hidden
+  and all checkboxes should be uncheck */
+  $( "#slider1" ).css( "visibility", "hidden" );
+  $( "#slider2" ).css( "visibility", "hidden" );
+  $( "#slider3" ).css( "visibility", "hidden" );
+  $( "#cb_dichte" ).prop( "checked", false );
+  $( "#cb_farbe" ).prop( "checked", false );
+  $( "#cb_wahl" ).prop( "checked", false );
 }
 
 
@@ -162,7 +170,7 @@ $(function(){
 	    $( "#p_farbe" ).css( "visibility", "visible" );
 	}
     });
-    $('#cb_wahl').change( function(){
+    j;$('#cb_wahl').change( function(){
 	// whenenver the status of the checkbox changes apply the
 	// following changes to the sliders style values (depending
 	// on its current state)
