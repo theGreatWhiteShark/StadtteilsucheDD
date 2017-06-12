@@ -1,3 +1,5 @@
+![Screenshot of the application](res/example.jpeg)
+
 # About
 Our little contribution at the [Open Data Crunch](http://www.dresden.de/de/wirtschaft/wirtschaftsstandort/projekte-kooperationen/open-data-crunch.php) competition during the [Datenspuren 2016](https://www.datenspuren.de/2016/fahrplan.html).
 
