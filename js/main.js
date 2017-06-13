@@ -170,7 +170,7 @@ $(function(){
 	    $( "#p_farbe" ).css( "visibility", "visible" );
 	}
     });
-    j;$('#cb_wahl').change( function(){
+    $('#cb_wahl').change( function(){
 	// whenenver the status of the checkbox changes apply the
 	// following changes to the sliders style values (depending
 	// on its current state)
