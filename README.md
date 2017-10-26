@@ -15,7 +15,7 @@ For an even better introduction to this package than the description above check
 
 One possible way to use this app is via an apache server.
 
-```bash
+``` bash
 sudo apt install apache2
 ```
 
@@ -25,7 +25,7 @@ and copy the content of this repository to /var/www/html
 
 Alternatively you can use [node.js](https://nodejs.org/en/).
 
-```bash
+``` bash
 sudo npm install -g http-server
 http-server
 ```
